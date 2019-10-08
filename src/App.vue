@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <MSplitPanelTest></MSplitPanelTest>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import MSplitPanelTest from './components/MSplitPanelTest.vue';
 
 @Component({
   components: {
-    HelloWorld,
+    MSplitPanelTest,
   },
 })
 export default class App extends Vue {}
@@ -19,11 +18,9 @@ export default class App extends Vue {}
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 </style>

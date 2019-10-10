@@ -34,17 +34,12 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Model } from 'vue-property-decorator';
-// import MSplit from '../components/MSplit.vue';
 import { PaneStatus } from '../components/PaneSet';
 import msplit from '../lib';
 
 Vue.use(msplit);
 
-@Component({
-  // components: {
-  //   MSplit,
-  // },
-})
+@Component
 export default class MSplitTest extends Vue {
   @Prop() private id?: string;
   private s1 = [true];

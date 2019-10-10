@@ -102,9 +102,9 @@ export default class MSplit extends Vue {
           let show = attrs.show;
           if (show === undefined)
             show = [true];
-          else if(!_.isArray(show))
+          else if (!_.isArray(show))
             throw new Error(`show attribute for pane has to be array: show=${attrs.show}, paneName=${skey}`);
-          
+
           this.$set(this.show, i++, show);
           this.paneSet.addPane(new Pane(slot!, parseInt(attrs.size), parseInt(attrs.min), parseInt(attrs.max), parseInt(attrs.grow), attrs));
         }

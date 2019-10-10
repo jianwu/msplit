@@ -1,34 +1,31 @@
 # msplit
 
-## Project setup
-```
-yarn install
+## Description
+
+A   resizable multi-pane component. Support the following features:
+
+* Supports toggle visibility for panes.
+* Supports toggle maximization for a pane.
+* Adjust pane size when the window resizes.
+* Horizontal and Vertical mode.
+
+## Usage
+
+```javascript
+import msplit from '../lib';
+Vue.use(msplit);
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
+```html
+  <msplit :vertical='true' :maxPane='maxPane'>
+    <div slot="p31" :show='s31' :grow='20' :min=250  :max=500> Pane31 </div>
+    <div slot="p32" :show='s32'> Pane32 </div>
+    <div slot="p33">Pane33 </div>
+  </msplit>
 ```
 
-### Run your tests
-```
-yarn run test
-```
+You can see the full example in the [MSplitTest](src/components/MSplitTest.vue):
 
-### Lints and fixes files
-```
-yarn run lint
-```
+## Live Demo
 
-### Run your unit tests
-```
-yarn run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+http://jianwu.github.io/msplit/

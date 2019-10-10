@@ -2,10 +2,11 @@
 
 ## Description
 
-A   resizable multi-pane component. Support the following features:
+A resizable multi-pane vue component implemented with typescript. Support the following features:
 
 * Supports toggle visibility for panes.
 * Supports toggle maximization for a pane.
+* Supports any number of panes.
 * Adjust pane size when the window resizes.
 * Horizontal and Vertical mode.
 
@@ -29,3 +30,8 @@ You can see the full example in the [MSplitTest](https://github.com/jianwu/mspli
 ## Live Demo
 
 http://jianwu.github.io/msplit/
+
+## License
+
+Copyright 2018-2019 Jianwu Chen
+Author/Developer: Jianwu Chen

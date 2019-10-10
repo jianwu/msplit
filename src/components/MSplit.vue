@@ -14,7 +14,6 @@
 </template>
 
 <script lang="ts">
-import _ from 'lodash';
 import PaneSet, { Pane, PaneStatus } from './PaneSet';
 import { OnResizeDirective } from './OnResize';
 import { Component, Prop, Vue, Model, Watch } from 'vue-property-decorator';
@@ -102,7 +101,7 @@ export default class MSplit extends Vue {
           let show = attrs.show;
           if (show === undefined)
             show = [true];
-          else if (!_.isArray(show))
+          else if (!Array.isArray(show))
             throw new Error(`show attribute for pane has to be array: show=${attrs.show}, paneName=${skey}`);
 
           this.$set(this.show, i++, show);

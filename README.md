@@ -24,7 +24,7 @@ Vue.use(msplit);
   </msplit>
 ```
 
-You can see the full example in the [MSplitTest](src/components/MSplitTest.vue):
+You can see the full example in the [MSplitTest](https://github.com/jianwu/msplit/blob/master/src/components/MSplitTest.vue).
 
 ## Live Demo
 

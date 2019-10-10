@@ -6,7 +6,7 @@ const DEF_INTERVAL = 500;
 /**
  * usage: <div v-on-resize:500='onWindowResize' />
  */
-class OnResizeDirective implements DirectiveOptions {
+export class OnResizeDirective implements DirectiveOptions {
   static instance = new OnResizeDirective();
   bind(el: HTMLElement, binding: DirectiveBinding) {
     const ctx = el as any;

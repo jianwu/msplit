@@ -102,15 +102,12 @@ export default class PaneSet {
     return this;
   }
 
-  getPaneByName(): Pane {
-    const pane = this.panes.find(p => p.name === name);
-    if (!pane)
-      throw new Error(`Pane not found: name=${name}`);
-    return pane;
+  getPaneByName(name: string): Pane | undefined {
+    return this.panes.find(p => p.name === name);
   }
 
-  setPaneStatus(name: string, status: PaneStatus) {
-    this.calculateSize();
+  public setMaxPane(p: string | Pane) {
+    this.maxPane = typeof p === 'string' ? this.getPaneByName(p) : p;
   }
 
   calculateSize(fromIdx = 0, toIdx = this.panes.length, totalSize = this.totalSize) {

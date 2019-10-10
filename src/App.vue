@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <MSplitPanelTest></MSplitPanelTest>
+    <MSplitTest></MSplitTest>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import MSplitPanelTest from './components/MSplitPanelTest.vue';
+import MSplitTest from './components/MSplitTest.vue';
 
 @Component({
   components: {
-    MSplitPanelTest,
+    MSplitTest,
   },
 })
 export default class App extends Vue {}

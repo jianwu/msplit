@@ -35,6 +35,14 @@
     "gh-pages": "^2.1.1",
     "vue-template-compiler": "^2.6.10"
   },
+  "homepage": "https://jianwu.github.io/msplit/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jianwu/msplit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jianwu/msplit/issues"
+  },  
   "keywords": [
     "vue",
     "vuejs",

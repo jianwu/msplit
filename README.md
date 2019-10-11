@@ -1,12 +1,7 @@
-<h1 align="center">msplit</h1>
+# msplit
 
-<p align="center">
-  A VueJs Component to show resizable multi-pan container<br>
-  <a href="#Usage">Usage</a> •
-  <a href="#live-demo">Live Demo</a>
-</p>
-
-<p align="center"><a href="https://github.com/jianwu/msplit"><img alt="GitHub Actions status" src="https://github.com/jianwu/msplit/workflows/Node%20CI/badge.svg"></a> <!--a href="https://codecov.io/gh/JasonEtco/actions-toolkit/"><img src="https://badgen.now.sh/codecov/c/github/JasonEtco/actions-toolkit" alt="Codecov"></a--></p>
+A VueJs Component to show resizable multi-pan container
+<a href="https://github.com/jianwu/msplit"><img alt="GitHub Actions status" src="https://github.com/jianwu/msplit/workflows/Node%20CI/badge.svg"></a> <!--a href="https://codecov.io/gh/JasonEtco/actions-toolkit/"><img src="https://badgen.now.sh/codecov/c/github/JasonEtco/actions-toolkit" alt="Codecov"></a-->
 
 ## Description
 

@@ -1,6 +1,6 @@
 {
   "name": "msplit",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build-app": "vue-cli-service build --dest dist/app",
@@ -42,7 +42,7 @@
   },
   "bugs": {
     "url": "https://github.com/jianwu/msplit/issues"
-  },  
+  },
   "keywords": [
     "vue",
     "vuejs",

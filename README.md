@@ -13,7 +13,7 @@ A resizable multi-pane vue component implemented with typescript. Support the fo
 ## Usage
 
 ```javascript
-import msplit from '../lib';
+import msplit from 'msplit';
 Vue.use(msplit);
 ```
 
@@ -33,5 +33,5 @@ http://jianwu.github.io/msplit/
 
 ## License
 
-Copyright 2018-2019 Jianwu Chen
+Copyright 2018-2019 Jianwu Chen <br>
 Author/Developer: Jianwu Chen

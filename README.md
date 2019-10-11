@@ -18,7 +18,6 @@ A resizable multi-pane vue component implemented with typescript. Support the fo
 
 ```javascript
 import msplit from 'msplit';
-import 'msplit/dist/lib/lib.css';
 
 Vue.use(msplit);
 ```

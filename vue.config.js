@@ -9,4 +9,7 @@ module.exports = {
     hotOnly: false,
     historyApiFallback: true,
   },
+  css: {
+    extract: false,
+  }
 };

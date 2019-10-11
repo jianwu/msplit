@@ -1,4 +1,4 @@
-import Vue from 'Vue';
+import Vue from 'vue';
 import MSplit from './components/MSplit.vue';
 import OnResize, { OnResizeDirective } from './components/OnResize';
 

@@ -1,6 +1,7 @@
 # msplit
 
 A VueJs Component to show resizable multi-pan container
+
 <a href="https://github.com/jianwu/msplit"><img alt="GitHub Actions status" src="https://github.com/jianwu/msplit/workflows/Node%20CI/badge.svg"></a> <!--a href="https://codecov.io/gh/JasonEtco/actions-toolkit/"><img src="https://badgen.now.sh/codecov/c/github/JasonEtco/actions-toolkit" alt="Codecov"></a-->
 
 ## Description
@@ -17,6 +18,8 @@ A resizable multi-pane vue component implemented with typescript. Support the fo
 
 ```javascript
 import msplit from 'msplit';
+import 'msplit/dist/lib/lib.css';
+
 Vue.use(msplit);
 ```
 

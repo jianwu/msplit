@@ -1,7 +1,8 @@
+# reference: https://help.github.com/en/articles/configuring-a-workflow
 name: Node CI
 
 on:
-- push:
+  push:
     branches:
     - master
 

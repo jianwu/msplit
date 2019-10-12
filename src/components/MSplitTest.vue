@@ -1,5 +1,12 @@
 <template>
   <div>
+    <h4 align="center">MSplit Demo</h4>
+
+    <p align="center">
+      A resizable multi-pane vue component implemented with typescript.<br>
+      <a href="https://github.com/jianwu/msplit">Github</a> •
+      <a href="https://www.npmjs.com/package/msplit">Npmjs</a> •
+    </p>
     <div>
       <b-button-group class="mx-1">
         Pane Visibility:
@@ -41,7 +48,6 @@ Vue.use(msplit);
 
 @Component
 export default class MSplitTest extends Vue {
-  @Prop() private id?: string;
   private s1 = [true];
   private s2 = [true];
   private s3 = [true];

@@ -1,12 +1,15 @@
 <template>
   <div class="msp-parent" v-on-resize:600='onWindowResize'>
-    <div class="msp-container" :class="{'msp-container-v': vertical}" @mousemove="resizing" @mouseup="stopResize">
+    <div class="msp-container" :class="{'msp-container-v': vertical}" 
+        @mousemove="resizing" @mouseup="stopResize" @touchmove.prevent="resizing" @touchend="stopResize">
       <template v-for="(p, i) in paneSet.panes">
         <div :key="'msp_' + i">
           <div class="msp-pane" :style="paneStyle(i)" >
             <slot :name="p.name" />
           </div>
-          <div v-if="i<paneSet.panes.length-1" class="msp-handle" :style="handleStyle(i)" @mousedown.prevent="startResize(i, $event)"/>
+          <div v-if="i<paneSet.panes.length-1" class="msp-handle" :style="handleStyle(i)" 
+              @mousedown.prevent="startResize(i, $event)"
+              @touchstart.prevent="startResize(i, $event)"/>
         </div>
       </template>
     </div>
@@ -14,9 +17,10 @@
 </template>
 
 <script lang="ts">
+import { Component, Prop, Vue, Model, Watch } from 'vue-property-decorator';
 import PaneSet, { Pane, PaneStatus } from './PaneSet';
 import { OnResizeDirective } from './OnResize';
-import { Component, Prop, Vue, Model, Watch } from 'vue-property-decorator';
+import { TouchEvent } from './TouchEvent';
 
 @Component({
   name: 'msplit',
@@ -34,18 +38,22 @@ export default class MSplit extends Vue {
   private resizeIndex = -1;
   private show: boolean[][] = [];
 
-  private startResize(i: number, e: MouseEvent): void {
+  private getPos(e: MouseEvent | TouchEvent): number {
+    const pos = (e instanceof MouseEvent) ? e : e.touches.item(0);
+    return this.vertical ? pos.clientY : pos.clientX;
+  }
+
+  private startResize(i: number, e: MouseEvent | TouchEvent): void {
     this.resizeIndex = i;
-    this.startPos = this.vertical ? e.clientY : e.clientX;
+    this.startPos = this.getPos(e);
     this.startHandlePos = this.paneSet.getHandlePos(i);
   }
 
-  private resizing(e: MouseEvent): void {
+  private resizing(e: MouseEvent | TouchEvent): void {
     if (this.resizeIndex < 0)
       return;
-    const newPos = this.vertical ? e.clientY : e.clientX;
+    const newPos = this.getPos(e);
     this.paneSet.moveHandle(this.resizeIndex, this.startHandlePos + newPos - this.startPos);
-    this.$forceUpdate();
   }
 
   private stopResize(): void {
@@ -159,6 +167,7 @@ export default class MSplit extends Vue {
   border-left: 1px solid grey;
   border-top: 1px solid grey;
   z-index: 10;
+  touch-action: none;
 }
 </style>
 

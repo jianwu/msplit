@@ -13,6 +13,7 @@ A resizable multi-pane vue component implemented with typescript. Support the fo
 * Supports any number of panes.
 * Adjust pane size when the window resizes.
 * Horizontal and Vertical mode.
+* Support device with touch interface.
 
 ## Usage
 

@@ -31,8 +31,8 @@
         <div slot="p33">Pane33 </div>
       </msplit>
       <msplit slot="p4" :size='200' :show='s4' :maxPane='maxPane'>
-        <div slot="p41" :show='s41'> Pane41 </div>
-        <div slot="p42" :show='s42'> Pane42 </div>
+        <div slot="p41" :show='s41' :grow=2> Pane41 </div>
+        <div slot="p42" :show='s42' :grow=1> Pane42 </div>
       </msplit>
     </msplit>
     </div>

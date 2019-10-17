@@ -49,7 +49,9 @@
     "split-pane",
     "multi-split-pane",
     "vue-component",
-    "typescript"
+    "typescript",
+    "Split Panes",
+    "panes resizer"
   ],
   "license": "MIT"
 }

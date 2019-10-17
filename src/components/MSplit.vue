@@ -31,6 +31,7 @@ import { TouchEvent } from './TouchEvent';
 export default class MSplit extends Vue {
   @Prop({default: false}) private vertical!: boolean;
   @Prop({default: ''}) private maxPane!: string;
+  private count = 0;
   private startPos = -1;
   private startHandlePos = -1;
   private paneSet = new PaneSet();
@@ -44,6 +45,8 @@ export default class MSplit extends Vue {
   }
 
   private startResize(i: number, e: MouseEvent | TouchEvent): void {
+    if (this.paneSet.maxPane)
+      return;
     this.resizeIndex = i;
     this.startPos = this.getPos(e);
     this.startHandlePos = this.paneSet.getHandlePos(i);
@@ -97,7 +100,7 @@ export default class MSplit extends Vue {
     this.paneSet.calculateSize();
   }
 
-  mounted(): this {
+  mounted() {
     let i = 0;
     for (const skey in this.$slots) {
       if (!this.$slots.hasOwnProperty(skey))
@@ -113,13 +116,12 @@ export default class MSplit extends Vue {
             throw new Error(`show attribute for pane has to be array: show=${attrs.show}, paneName=${skey}`);
 
           this.$set(this.show, i++, show);
-          this.paneSet.addPane(new Pane(slot!, parseInt(attrs.size), parseInt(attrs.min), parseInt(attrs.max), parseInt(attrs.grow), attrs));
+          this.paneSet.addPane(new Pane(slot!, parseInt(attrs.size), parseInt(attrs.min), parseInt(attrs.max), parseInt(attrs.grow)));
         }
       }
     }
     this.paneSet.totalSize = this.vertical ? this.$el.clientHeight : this.$el.clientWidth;
     this.paneSet.calculateSize();
-    return this;
   }
 }
 </script>

@@ -9,52 +9,37 @@ function noNaN(n: number, def = 0): number {
 }
 
 export class Range {
-  public min = 0;
-  public max = 0;
-
-  public constructor(min = 0, max = 0) {
-    this.min = noNaN(min);
-    this.max = noNaN(max);
-  }
+  public constructor(public min = 0, public max = 0) {}
 
   public contains(num: number): boolean {
-    return num > this.min && num < this.max;
+    return (!this.min || num > this.min) && (!this.max || num < this.max);
   }
 
-  public add(other: Range) {
-    this.min += other.min;
-    if (this.max === Number.MAX_VALUE && other.max === Number.MAX_VALUE)
-      return;
-    this.max += other.max;
+  public add(other: Range): this {
+    this.min = !this.min ? other.min : this.min + other.min;
+    this.max = (this.max === Number.MAX_VALUE || other.max === Number.MAX_VALUE) ? Number.MAX_VALUE : this.max + other.max;
+    return this;
   }
-}
-
-interface Attrs {
-  size?: number;
-  min?: number;
-  max?: number;
-  grow?: number;
-  status?: PaneStatus;
 }
 
 // tslint:disable-next-line: max-classes-per-file
 export class Pane extends Range {
-  public name: string;
-  public size = 0;  // Assume the initial size should always between min and max
   public curSize = 0;
-  public grow = 1;  // The propotion to fill the remain spaces
   public status = PaneStatus.NORMAL;
   public paneSet?: PaneSet;
-  public attrs: Attrs;
+  public grow = 1;
 
-  constructor(name: string, size: number, min = 10, max = Number.MAX_VALUE, grow = 1, attrs = {}) {
-    super(noNaN(min, 10), noNaN(max, Number.MAX_VALUE));
-    this.name = name;
-    this.size = noNaN(size);
-    this.curSize = this.size;
-    this.grow = noNaN(grow, 1);
+  constructor(
+      public name: string,
+      public size: number,
+      min = 10,
+      max = NaN,
+      grow = 1) {
+    super(min || 10, max);
+    this.curSize = this.size || 0;
     this.status = PaneStatus.NORMAL;
-    this.attrs = attrs;
+    if (grow)
+        this.grow = grow;
   }
 
   getDisplaySize(): number {
@@ -76,8 +61,7 @@ export class Pane extends Range {
     return this;
   }
 
-  /** @returns {String} */
-  toString(): string {
+  toString() {
     return `{name:${this.name},curSize:${this.curSize.toFixed(2)}, grow:${this.grow.toFixed(2)}}`;
   }
 }
@@ -92,7 +76,7 @@ export default class PaneSet {
   public panes = new Array<Pane>();
   public maxPane?: Pane;
 
-  toString(): string {
+  toString() {
     return `{totalSize:${this.totalSize},panes:[${this.panes}]}`;
   }
 
@@ -171,11 +155,11 @@ export default class PaneSet {
     let limitSize = 0;
     for (const p of Array.from(remainPanes)) {
       const size = perSize * p.grow;
-      if (size < p.min && p.min - size > delta) {
+      if (p.min && size < p.min && p.min - size > delta) {
         result = p;
         delta = p.min - size;
         limitSize = p.min;
-      } else if (size > p.max && size - p.max > delta) {
+      } else if (p.max && size > p.max && size - p.max > delta) {
         result = p;
         delta = size - p.max;
         limitSize = p.max;
@@ -187,30 +171,24 @@ export default class PaneSet {
   }
 
   getSizeRange(fromIdx = 0, toIdx = this.panes.length): Range {
-    const res = new Range();
-    for (let i = fromIdx; i < toIdx; i++) {
-      const p = this.panes[i];
-      if (p.status !== PaneStatus.NORMAL)
-        continue;
-      res.add(p);
-    }
-    return res;
+    return this.panes
+        .slice(fromIdx, toIdx)
+        .filter(p => p.status !== PaneStatus.MIINIMIZED)
+        .reduce((res, p) => res.add(p), new Range());
   }
 
   /**
    *  @param {Number} idx
    */
   getHandlePos(idx: number): number {
-    let result = 0;
-    for (let i = 0; i <= idx; i++) {
-      result += this.panes[i].getDisplaySize();
-    }
-    return result;
+    return this.panes
+        .slice(0, idx + 1)
+        .reduce((res, p) => res += p.getDisplaySize(), 0);
   }
 
   moveHandle(idx: number, pos: number) {
     if (!this.getSizeRange(0, idx + 1).contains(pos) ||
-      !this.getSizeRange(idx + 1).contains(this.totalSize - pos))
+        !this.getSizeRange(idx + 1).contains(this.totalSize - pos))
       return;
 
     this.calculateSize(0, idx + 1, pos);

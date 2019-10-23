@@ -129,8 +129,8 @@ export default class MSplit extends Vue {
 <style scoped>
 .msp-parent {
   width:100%;
-  border: 1px solid red;
-  background-color: rgba(255, 0, 0, 0.315);
+  border: 1px solid rgba(154, 152, 179, 0.242);
+  background-color: rgba(192, 163, 163, 0.05);
   height: 100%;
   display: block;
   /* position: fixed; */

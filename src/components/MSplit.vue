@@ -21,6 +21,7 @@ import { Component, Prop, Vue, Model, Watch } from 'vue-property-decorator';
 import PaneSet, { Pane, PaneStatus } from './PaneSet';
 import { OnResizeDirective } from './OnResize';
 import { TouchEvent } from './TouchEvent';
+import _ from 'lodash';
 
 @Component({
   name: 'msplit',
@@ -39,6 +40,14 @@ export default class MSplit extends Vue {
   private resizeIndex = -1;
   private show: boolean[][] = [];
 
+  constructor() {
+    super();
+  }
+
+  created() {
+    this.resizing = _.throttle((e: MouseEvent | TouchEvent) => { this._resizing(e); }, 30);
+  }
+
   private getPos(e: MouseEvent | TouchEvent): number {
     const pos = (e instanceof MouseEvent) ? e : e.touches.item(0);
     return this.vertical ? pos.clientY : pos.clientX;
@@ -52,12 +61,15 @@ export default class MSplit extends Vue {
     this.startHandlePos = this.paneSet.getHandlePos(i);
   }
 
-  private resizing(e: MouseEvent | TouchEvent): void {
+  private _resizing(e: MouseEvent | TouchEvent): void {
+    console.log(`this.resizeIndex=${this.resizeIndex}`);
     if (this.resizeIndex < 0)
       return;
     const newPos = this.getPos(e);
     this.paneSet.moveHandle(this.resizeIndex, this.startHandlePos + newPos - this.startPos);
   }
+
+  private resizing?: (e: MouseEvent | TouchEvent) => void;
 
   private stopResize(): void {
     this.resizeIndex = -1;

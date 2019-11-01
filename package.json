@@ -11,6 +11,8 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.144",
+    "lodash": "^4.17.15",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0"
@@ -24,17 +26,18 @@
     "*.js"
   ],
   "devDependencies": {
-    "bootstrap-vue": "^2.0.3",
     "@types/jest": "^23.1.4",
     "@vue/cli-plugin-typescript": "^3.11.0",
     "@vue/cli-plugin-unit-jest": "^3.11.0",
     "@vue/cli-service": "^3.11.0",
     "@vue/test-utils": "1.0.0-beta.29",
+    "bootstrap-vue": "^2.0.3",
+    "gh-pages": "^2.1.1",
     "ts-jest": "^23.0.0",
     "typescript": "^3.4.3",
-    "gh-pages": "^2.1.1",
     "vue-template-compiler": "^2.6.10"
   },
+  "author": "Jianwu Chen",
   "homepage": "https://jianwu.github.io/msplit/",
   "repository": {
     "type": "git",

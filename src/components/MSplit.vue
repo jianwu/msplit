@@ -1,7 +1,7 @@
 <template>
   <div class="msp-parent" v-on-resize:600='onWindowResize'>
     <div class="msp-container" :class="{'msp-container-v': vertical}" 
-        @mousemove="resizing" @mouseup="stopResize" @touchmove.prevent="resizing" @touchend="stopResize">
+        @mousemove="resizing" @mouseup="stopResize" @touchmove="resizing" @touchend="stopResize">
       <template v-for="(p, i) in paneSet.panes">
         <div :key="'msp_' + i">
           <div class="msp-pane" :style="paneStyle(i)" >
@@ -57,6 +57,7 @@ export default class MSplit extends Vue {
       return;
     const newPos = this.getPos(e);
     this.paneSet.moveHandle(this.resizeIndex, this.startHandlePos + newPos - this.startPos);
+    e.stopPropagation();
   }
 
   private stopResize(): void {
@@ -169,7 +170,7 @@ export default class MSplit extends Vue {
   border-left: 1px solid grey;
   border-top: 1px solid grey;
   z-index: 10;
-  touch-action: none;
+  /* touch-action: none; */
 }
 </style>
 

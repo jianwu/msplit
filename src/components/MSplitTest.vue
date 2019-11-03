@@ -31,7 +31,7 @@
         <div slot="p33">Pane33 </div>
       </msplit>
       <msplit slot="p4" :size='200' :show='s4' :maxPane='maxPane'>
-        <div slot="p41" :show='s41' :grow=2> Pane41 </div>
+        <div slot="p41" :show='s41' :grow=2 class="p41"> Pane41 Pane41  Pane41  Pane41  Pane41  Pane41  Pane41  Pane41  Pane41  Pane41  </div>
         <div slot="p42" :show='s42' :grow=1> Pane42 </div>
       </msplit>
     </msplit>
@@ -66,6 +66,10 @@ export default class MSplitTest extends Vue {
   height: 500px;
   background-color:rgba(0, 128, 0, 0.1);
   align-self: center;
+}
+.p41 {
+  white-space: nowrap;
+  overflow: scroll;
 }
 </style>
 

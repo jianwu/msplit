@@ -1,6 +1,6 @@
 {
   "name": "msplit",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build-app": "vue-cli-service build --dest dist/app",

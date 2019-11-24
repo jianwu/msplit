@@ -50,6 +50,10 @@ export class Pane extends Range {
     return this.status === PaneStatus.NORMAL ? this.curSize : 0;
   }
 
+  visible(): boolean {
+    return this.getDisplaySize() > 0;
+  }
+
   setStatus(status: PaneStatus): this {
     if (this.status === status || !this.paneSet)
       return this;

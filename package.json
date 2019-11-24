@@ -1,6 +1,6 @@
 {
   "name": "msplit",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build-app": "vue-cli-service build --dest dist/app",
@@ -24,15 +24,15 @@
     "*.js"
   ],
   "devDependencies": {
-    "bootstrap-vue": "^2.0.3",
     "@types/jest": "^23.1.4",
     "@vue/cli-plugin-typescript": "^3.11.0",
     "@vue/cli-plugin-unit-jest": "^3.11.0",
     "@vue/cli-service": "^3.11.0",
     "@vue/test-utils": "1.0.0-beta.29",
+    "bootstrap-vue": "^2.0.3",
+    "gh-pages": "^2.1.1",
     "ts-jest": "^23.0.0",
     "typescript": "^3.4.3",
-    "gh-pages": "^2.1.1",
     "vue-template-compiler": "^2.6.10"
   },
   "homepage": "https://jianwu.github.io/msplit/",

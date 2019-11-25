@@ -4,7 +4,8 @@
         @mousemove="resizing" @mouseup="stopResize" @touchmove="resizing" @touchend="stopResize">
       <template v-for="(p, i) in paneSet.panes">
         <div :key="'msp_' + i">
-          <div class="msp-pane" :style="paneStyle(i)" v-if="visible(i)">
+          <!-- <div class="msp-pane" :style="paneStyle(i)" v-if="visible(i)"> -->
+          <div class="msp-pane" :style="paneStyle(i)">
             <slot :name="p.name" />
           </div>
           <div v-if="i<paneSet.panes.length-1" class="msp-handle" :style="handleStyle(i)"
@@ -162,7 +163,7 @@ export default class MSplit extends Vue {
   box-sizing: border-box;
   border-collapse: collapse;
   display: flex;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .msp-handle {

@@ -4,10 +4,10 @@
         @mousemove="resizing" @mouseup="stopResize" @touchmove="resizing" @touchend="stopResize">
       <template v-for="(p, i) in paneSet.panes">
         <div :key="'msp_' + i">
-          <div class="msp-pane" :style="paneStyle(i)" v-show="paneSet.panes[i].visible()">
+          <div class="msp-pane" :style="paneStyle(i)" v-if="visible(i)">
             <slot :name="p.name" />
           </div>
-          <div v-if="i<paneSet.panes.length-1" class="msp-handle" :style="handleStyle(i)" 
+          <div v-if="i<paneSet.panes.length-1" class="msp-handle" :style="handleStyle(i)"
               @mousedown.prevent="startResize(i, $event)"
               @touchstart.prevent="startResize(i, $event)"/>
         </div>
@@ -84,6 +84,10 @@ export default class MSplit extends Vue {
       [this.vertical ? 'height' : 'width']: '5px',
       cursor: this.vertical ? 'row-resize' : 'col-resize',
     });
+  }
+
+  get visible() {
+    return (i: number) => this.paneSet.panes[i].visible();
   }
 
   @Watch('maxPane')

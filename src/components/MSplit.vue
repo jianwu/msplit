@@ -126,6 +126,7 @@ export default class MSplit extends Vue {
         }
       }
     }
+    this.maxPaneUpdated();
     this.paneSet.totalSize = this.vertical ? this.$el.clientHeight : this.$el.clientWidth;
     this.paneSet.calculateSize();
   }

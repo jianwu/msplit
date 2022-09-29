@@ -56,7 +56,7 @@ export default class MSplitTest extends Vue {
   private s4 = [true];
   private s41 = [true];
   private s42 = [true];
-  private maxPane = '';
+  maxPane = '';
 }
 </script>
 

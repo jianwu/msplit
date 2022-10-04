@@ -28,7 +28,7 @@
       <msplit :vertical='true' slot="p3" :grow='20' :show='s3' :maxPane='maxPane'>
         <div slot="p31" :show='s31'> Pane31 </div>
         <div slot="p32" :show='s32'> Pane32 </div>
-        <div slot="p33">Pane33 </div>
+        <div slot="p33">Pane33<br/>Pane33<br/>Pane33<br/>Pane33<br/>Pane33<br/>Pane33<br/>Pane33<br/>Pane33<br/>Pane33<br/>Pane33<br/>Pane33<br/>Pane33<br/></div>
       </msplit>
       <msplit slot="p4" :size='200' :show='s4' :maxPane='maxPane'>
         <div slot="p41" :show='s41' :grow=2 class="p41"> Pane41 Pane41  Pane41  Pane41  Pane41  Pane41  Pane41  Pane41  Pane41  Pane41  </div>

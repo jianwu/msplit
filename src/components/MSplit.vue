@@ -164,7 +164,7 @@ export default class MSplit extends Vue {
   box-sizing: border-box;
   border-collapse: collapse;
   display: flex;
-  /* overflow: auto; */
+  overflow: auto;
 }
 
 .msp-handle {
